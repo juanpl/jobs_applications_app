@@ -151,6 +151,10 @@ class SqliteDataSourceImpl implements JobOfferLocalDataSource {
       List<int> technicalSkillsIdList = await addTechnicalSkillsList(jobOfferId,jobOffer.technicalSkills, db);
       List<int> necessaryFrameworksIdList = await addNecessaryFrameworks(jobOfferId, jobOffer.necessaryFrameworks, db);
       
+      if(jobOfferId == 0) return false;
+      if(technicalSkillsIdList.isEmpty) return false;
+      if(necessaryFrameworksIdList.isEmpty) return false;
+
       return true;
 
     } catch (error) {
@@ -165,8 +169,12 @@ class SqliteDataSourceImpl implements JobOfferLocalDataSource {
       final dbInstance = SqliteDataSourceImpl();
       final db = await dbInstance.database;
       final res = await db!.delete('JobOffers', where: 'id = ?', whereArgs: [id]);
-      final res2 = await db!.delete('TechnicalSkills', where: 'job_offer_id = ?', whereArgs: [id]);
-      final res3 = await db!.delete('NecessaryFrameworks', where: 'job_offer_id = ?', whereArgs: [id]);
+      final res2 = await db.delete('TechnicalSkills', where: 'job_offer_id = ?', whereArgs: [id]);
+      final res3 = await db.delete('NecessaryFrameworks', where: 'job_offer_id = ?', whereArgs: [id]);
+      
+      if(res == 0) return false;
+      if(res2 == 0) return false;
+      if(res3 == 0) return false;
       return true;
       
     } catch (error) {

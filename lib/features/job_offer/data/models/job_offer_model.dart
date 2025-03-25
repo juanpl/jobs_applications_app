@@ -15,6 +15,20 @@ class JobOfferModel extends JobOffer{
     required super.applyOnTheOfficialWebSite
   });
 
+  factory JobOfferModel.fromJson(json) {
+    return JobOfferModel(
+      id: json['id'],
+      jobTitle: json['job_title'], 
+      companyName: json['company_name'],
+      postulationDate: json['company_name'],
+      plataformWhereApplied: json['company_name'],
+      technicalSkills: List<String>.from(json["technical_skills"].map((x) => x)),
+      necessaryFrameworks: List<String>.from(json["necessary_frameworks"].map((x) => x)),
+      webPage: json['company_name'],
+      applyOnTheOfficialWebSite: json['apply_on_the_official_web_site']
+    );
+  }
+
   factory JobOfferModel.fromEntity( JobOffer jobOffer) {
     return JobOfferModel(
       id: jobOffer.id, 
@@ -41,6 +55,20 @@ class JobOfferModel extends JobOffer{
       'applyOnTheOfficialWebSite': applyOnTheOfficialWebSite
     };
     
+  }
+
+  factory JobOfferModel.fromJsonDB(json) {
+    return JobOfferModel(
+      id: json['id'],
+      jobTitle: json['job_title'], 
+      companyName: json['company_name'],
+      postulationDate: json['company_name'],
+      plataformWhereApplied: json['company_name'],
+      technicalSkills: [],
+      necessaryFrameworks: [],
+      webPage: json['company_name'],
+      applyOnTheOfficialWebSite: json['apply_on_the_official_web_site']
+    );
   }
   
 

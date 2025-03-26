@@ -10,7 +10,7 @@ class LoadJobOffersListUseCase {
 
   LoadJobOffersListUseCase({required this.repository});
 
-  Future<Either<Failure, List<JobOffer>>> loadJobOffersList(){
+  Future<Either<Failure, List<JobOffer>>> call(){
     return repository.loadJobOffersList();
   }
 

@@ -7,16 +7,22 @@ final class JobOfferInitial extends JobOfferState {}
 
 final class JobOfferLoading extends JobOfferState {}
 
-final class JobOffer extends JobOfferState {
+final class LoadedJobOffer extends JobOfferState {
   final JobOffer jobOffer;
 
-  JobOffer({required this.jobOffer});
+  LoadedJobOffer({required this.jobOffer});
 }
 
-final class JobOffersList extends JobOfferState {
+final class LoadedJobOffersList extends JobOfferState {
   final List<JobOffer> jobOffersList;
 
-  JobOffersList({required this.jobOffersList});
+  LoadedJobOffersList({required this.jobOffersList});
+}
+
+final class DeletedJobOffer extends JobOfferState {
+  final bool jobOfferDeleted;
+
+  DeletedJobOffer({required this.jobOfferDeleted});
 }
 
 final class JobOfferFailure extends JobOfferState {

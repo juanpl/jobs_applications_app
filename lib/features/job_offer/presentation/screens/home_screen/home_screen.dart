@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:jobs_applications_app/features/job_offer/presentation/widgets/shared/custom_navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Text('NewFormulariesButtonScreen'),
       ),
+      bottomNavigationBar: CustomNavigationBar(),
     );
   }
 }
